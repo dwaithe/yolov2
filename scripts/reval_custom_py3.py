@@ -25,6 +25,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Re-evaluate results')
     parser.add_argument('output_dir', nargs=1, help='results directory',
                         type=str)
+    parser.add_argument('iterations', nargs=1, help='iterations number of the model',
+                        type=str)
     parser.add_argument('--dataset_dir', dest='dataset_dir', default='data/VOCdevkit', type=str)
     parser.add_argument('--year', dest='year', default='2017', type=str)
     parser.add_argument('--image_set', dest='image_set', default='test', type=str)
