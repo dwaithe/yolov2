@@ -1,0 +1,25 @@
+def parse_args():
+    """
+    Parse input arguments
+    """
+    parser = argparse.ArgumentParser(description='list results')
+    parser.add_argument('iterations', nargs=1, help='iterations',type=str)
+    
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(1)
+
+    args = parser.parse_args()
+    return args
+
+if __name__ == '__main__':
+    args = parse_args()
+
+    
+    iterations = args.iterations[0]
+    b = pickle.load(open('results/cell - neuroblastoma phalloidin_100_pr.pkl','rb')
+
+    print('iterations\t'+b[ap])
+
+    
