@@ -24,6 +24,6 @@ if __name__ == '__main__':
     iterations = args.iterations[0]
     b = pickle.load(open('results/cell - neuroblastoma phalloidin_'+iterations+'_pr.pkl','rb'))
 
-    print('iterations\t'+str(b['ap']))
+    print('iterations\t'+str(iterations)+'\tmAP\t'+str(b['ap']))
 
     
