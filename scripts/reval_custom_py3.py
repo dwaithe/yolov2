@@ -44,7 +44,7 @@ def get_voc_results_file_template(image_set, out_dir = 'results'):
     print('path',path)
     return path
 
-def do_python_eval(devkit_path, year, image_set, classes, output_dir):
+def do_python_eval(devkit_path, year, image_set, classes, output_dir,iterations):
     annopath = os.path.join(
         devkit_path,
         year,
@@ -74,7 +74,7 @@ def do_python_eval(devkit_path, year, image_set, classes, output_dir):
             use_07_metric=use_07_metric)
         aps += [ap]
         print('AP for {} = {:.4f}'.format(cls, ap))
-        with open(os.path.join(output_dir, cls + '_pr.pkl'), 'wb') as f:
+        with open(os.path.join(output_dir, cls +'_'+iterations+'_pr.pkl'), 'wb') as f:
             cPickle.dump({'rec': rec, 'prec': prec, 'ap': ap}, f)
     print('Mean AP = {:.4f}'.format(np.mean(aps)))
     print('~~~~~~~~')
@@ -96,10 +96,11 @@ if __name__ == '__main__':
     args = parse_args()
 
     output_dir = os.path.abspath(args.output_dir[0])
+    iterations = args.output_dir[1]
     with open(args.class_file, 'r') as f:
         lines = f.readlines()
 
     classes = [t.strip('\n') for t in lines]
 
     print('Evaluating detections in path', output_dir)
-    do_python_eval(args.dataset_dir, args.year, args.image_set, classes, output_dir)
+    do_python_eval(args.dataset_dir, args.year, args.image_set, classes, output_dir, iterations)
