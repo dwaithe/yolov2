@@ -98,7 +98,7 @@ if __name__ == '__main__':
     args = parse_args()
 
     output_dir = os.path.abspath(args.output_dir[0])
-    iterations = args.output_dir[1]
+    iterations = args.iterations[0]
     with open(args.class_file, 'r') as f:
         lines = f.readlines()
 
