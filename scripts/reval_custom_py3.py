@@ -13,9 +13,10 @@
 
 import os, sys, argparse
 import numpy as np
-import cPickle
+import _pickle as cPickle
+#import cPickle
 
-from voc_eval import voc_eval
+from voc_eval_py3 import voc_eval
 
 def parse_args():
     """
@@ -24,7 +25,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Re-evaluate results')
     parser.add_argument('output_dir', nargs=1, help='results directory',
                         type=str)
-    parser.add_argument('--voc_dir', dest='voc_dir', default='data/VOCdevkit', type=str)
+    parser.add_argument('--dataset_dir', dest='dataset_dir', default='data/VOCdevkit', type=str)
     parser.add_argument('--year', dest='year', default='2017', type=str)
     parser.add_argument('--image_set', dest='image_set', default='test', type=str)
 
@@ -40,25 +41,28 @@ def parse_args():
 def get_voc_results_file_template(image_set, out_dir = 'results'):
     filename = 'comp4_det_' + image_set + '_{:s}.txt'
     path = os.path.join(out_dir, filename)
+    print('path',path)
     return path
 
-def do_python_eval(devkit_path, year, image_set, classes, output_dir = 'results'):
+def do_python_eval(devkit_path, year, image_set, classes, output_dir):
     annopath = os.path.join(
         devkit_path,
-        'VOC' + year,
+        year,
         'Annotations',
-        '{:s}.xml')
+        '{}.xml')
     imagesetfile = os.path.join(
         devkit_path,
-        'VOC' + year,
+        year,
         'ImageSets',
         'Main',
         image_set + '.txt')
     cachedir = os.path.join(devkit_path, 'annotations_cache')
     aps = []
     # The PASCAL VOC metric changed in 2010
-    use_07_metric = True if int(year) < 2010 else False
-    print 'VOC07 metric? ' + ('Yes' if use_07_metric else 'No')
+    use_07_metric = False
+    print('VOC07 metric? ' + ('Yes' if use_07_metric else 'No'))
+    print('devkit_path=',devkit_path,', year = ',year)
+
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
     for i, cls in enumerate(classes):
@@ -70,7 +74,7 @@ def do_python_eval(devkit_path, year, image_set, classes, output_dir = 'results'
             use_07_metric=use_07_metric)
         aps += [ap]
         print('AP for {} = {:.4f}'.format(cls, ap))
-        with open(os.path.join(output_dir, cls + '_pr.pkl'), 'w') as f:
+        with open(os.path.join(output_dir, cls + '_pr.pkl'), 'wb') as f:
             cPickle.dump({'rec': rec, 'prec': prec, 'ap': ap}, f)
     print('Mean AP = {:.4f}'.format(np.mean(aps)))
     print('~~~~~~~~')
@@ -97,5 +101,5 @@ if __name__ == '__main__':
 
     classes = [t.strip('\n') for t in lines]
 
-    print 'Evaluating detections'
-    do_python_eval(args.voc_dir, args.year, args.image_set, classes, output_dir)
+    print('Evaluating detections in path', output_dir)
+    do_python_eval(args.dataset_dir, args.year, args.image_set, classes, output_dir)
