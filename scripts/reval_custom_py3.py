@@ -55,8 +55,6 @@ def do_python_eval(devkit_path, year, image_set, classes, output_dir,iterations)
     imagesetfile = os.path.join(
         devkit_path,
         year,
-        'ImageSets',
-        'Main',
         image_set + '.txt')
     cachedir = os.path.join(devkit_path, 'annotations_cache')
     aps = []
