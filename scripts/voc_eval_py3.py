@@ -131,7 +131,6 @@ def voc_eval(detpath,
     detfile = detpath.format(classname)
     with open(detfile, 'r') as f:
         lines = f.readlines()
-        print (lines)
 
     splitlines = [x.strip().split(' ') for x in lines]
     image_ids = [x[0] for x in splitlines]
