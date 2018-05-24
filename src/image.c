@@ -439,6 +439,22 @@ void flip_image(image a)
     }
 }
 
+void flipv_image(image a)
+{
+    int i,j,k;
+    for(k = 0; k < a.c; ++k){
+        for(i = 0; i < a.h/2; ++i){
+            for(j = 0; j < a.w; ++j){
+                int index = j + a.w*(i + a.h*(k));
+                int flip = j + a.w*((a.h-i-1) + a.h*(k));
+                float swap = a.data[flip];
+                a.data[flip] = a.data[index];
+                a.data[index] = swap;
+            }
+        }
+    }
+}
+
 image image_distance(image a, image b)
 {
     int i,j;
