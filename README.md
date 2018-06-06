@@ -1,6 +1,8 @@
-# Yolo-v2 Windows and Linux version
+# Yolo-v2 modified for microscopy, Windows and Linux version
 
-[![CircleCI](https://circleci.com/gh/AlexeyAB/darknet.svg?style=svg)](https://circleci.com/gh/AlexeyAB/darknet)
+This repository is forked from Linux-version: https://github.com/pjreddie/darknet
+Largely the code is as in the original by PJ Reddie. There are some specific modifications for using on microscopy data.
+
 
 1. [How to use](#how-to-use)
 2. [How to compile on Linux](#how-to-compile-on-linux)
@@ -14,17 +16,13 @@
 10. [Using Yolo9000](#using-yolo9000)
 11. [How to use Yolo as DLL](#how-to-use-yolo-as-dll)
 
-|  ![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png) | &nbsp; ![map_fps](https://hsto.org/files/a24/21e/068/a2421e0689fb43f08584de9d44c2215f.jpg) https://arxiv.org/abs/1612.08242 |
-|---|---|
 
-|  ![Darknet Logo](http://pjreddie.com/media/files/darknet-black-small.png) | &nbsp; ![map_fps](https://hsto.org/files/3a6/fdf/b53/3a6fdfb533f34cee9b52bdd9bb0b19d9.jpg) https://arxiv.org/abs/1612.08242 |
-|---|---|
 
 
 # "You Only Look Once: Unified, Real-Time Object Detection (version 2)"
 A Yolo cross-platform Windows and Linux version (for object detection). Contributtors: https://github.com/pjreddie/darknet/graphs/contributors
 
-This repository is forked from Linux-version: https://github.com/pjreddie/darknet
+
 
 More details: http://pjreddie.com/darknet/yolo/
 
@@ -57,9 +55,7 @@ You can get cfg-files by path: `darknet/cfg/`
 
 ##### Examples of results:
 
-[![Everything Is AWESOME](http://img.youtube.com/vi/VOC3huqHrss/0.jpg)](https://www.youtube.com/watch?v=VOC3huqHrss "Everything Is AWESOME")
 
-Others: https://www.youtube.com/channel/UC7ev3hNVkx4DzZ3LO19oebg
 
 ### How to use:
 
