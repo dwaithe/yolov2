@@ -1,7 +1,8 @@
 # Yolo-v2 modified for microscopy, Windows and Linux version
 
 This repository is forked from Linux-version: https://github.com/pjreddie/darknet
-Largely the code is as in the original by PJ Reddie. There are some specific modifications for using on microscopy data.
+
+Largely the code is as in the original by PJ Reddie. Here there are some specific modifications for using on microscopy data by Dominic Waithe.
 
 
 1. [How to use](#how-to-use)
