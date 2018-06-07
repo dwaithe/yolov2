@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     
     file_to_open = args.iterations[0]
-    b = pickle.load(open('results/'+file_to_open,'rb'))
+    b = pickle.load(open(file_to_open,'rb'))
 
     print('iterations\t'+str(file_to_open.split('_')[1])+'\tmAP\t'+str(b['ap']))
 
