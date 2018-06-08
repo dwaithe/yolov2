@@ -31,7 +31,6 @@ if __name__ == '__main__':
     out = str(datetime.datetime.now())+'\t'+str(file_to_open)+'\titerations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
     
     file_name = 'my_file.txt'
-    print "Current date and time: " , 
     f = open(outpath+'log.txt', 'a+')  # open file in append mode
     f.write(out+'\n')
     f.close()
