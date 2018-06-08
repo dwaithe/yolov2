@@ -725,7 +725,7 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
 
         int flip_h = random_gen()%2;
         int flip_v = 0;
-        printf("fllip_vertical %d",flip_vertical)
+        printf("fllip_vertical %d",flip_vertical);
         if(flip_vertical) flip_v = random_gen()%2;
         image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
 
