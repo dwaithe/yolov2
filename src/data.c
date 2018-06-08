@@ -549,7 +549,7 @@ data load_data_region(int n, char **paths, int m, int w, int h, int size, int cl
 
         image sized = resize_image(cropped, w, h);
         if(flip_h) flip_image(sized);
-        printf("testing")
+        printf("testing");
         if(flip_v) {
             flipv_image(sized);
             printf("flipping");
