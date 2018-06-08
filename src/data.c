@@ -502,7 +502,7 @@ void free_data(data d)
     }
 }
 
-data load_data_region(int n, char **paths, int m, int w, int h, int size, int classes, float jitter, float hue, float saturation, float exposure)
+data load_data_region(int n, char **paths, int m, int w, int h, int size, int classes, float jitter, float hue, float saturation, float exposure, int flip_vertical)
 {
     char **random_paths = get_random_paths(paths, n, m);
     int i;
@@ -537,7 +537,12 @@ data load_data_region(int n, char **paths, int m, int w, int h, int size, int cl
         float sy = (float)sheight / oh;
 
         int flip_h = random_gen()%2;
-        int flip_v = random_gen()%2;
+
+        if(flip_vertical){
+            int flip_v = random_gen()%2;
+        }else{
+            int flip_v = 0 
+        }
 
         image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
 
@@ -546,7 +551,11 @@ data load_data_region(int n, char **paths, int m, int w, int h, int size, int cl
 
         image sized = resize_image(cropped, w, h);
         if(flip_h) flip_image(sized);
-        if(flip_v) flipv_image(sized);
+
+        if(flip_v) {
+            flipv_image(sized);
+            printf("flipping");
+        }
         random_distort_image(sized, hue, saturation, exposure);
         d.X.vals[i] = sized.data;
 
@@ -751,7 +760,7 @@ void *load_thread(void *ptr)
     } else if (a.type == WRITING_DATA){
         *a.d = load_data_writing(a.paths, a.n, a.m, a.w, a.h, a.out_w, a.out_h);
     } else if (a.type == REGION_DATA){
-        *a.d = load_data_region(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure);
+        *a.d = load_data_region(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure, a.flip_vertical);
     } else if (a.type == DETECTION_DATA){
         *a.d = load_data_detection(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure, a.small_object);
     } else if (a.type == SWAG_DATA){
