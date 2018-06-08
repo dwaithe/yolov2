@@ -8,7 +8,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description='list results')
     parser.add_argument('iterations', nargs=1, help='iterations',type=str)
-    parser.add_argument('outpath', nargs=1 help='out path for log', type=str)
+    parser.add_argument('outpath', nargs=1, help='out path for log', type=str)
     
     
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     outpath = args.iterations[1]
     b = pickle.load(open(file_to_open,'rb'))
 
-    out = 'iterations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
+    out = str(file_to_open)+'\titerations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
     print(out)
     file_name = 'my_file.txt'
     f = open(outpath+'log.txt', 'a+')  # open file in append mode
