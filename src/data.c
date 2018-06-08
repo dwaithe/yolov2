@@ -541,7 +541,7 @@ data load_data_region(int n, char **paths, int m, int w, int h, int size, int cl
         if(flip_vertical){
             int flip_v = random_gen()%2;
         }else{
-            int flip_v = 0 
+            int flip_v = 0;
         }
 
         image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
