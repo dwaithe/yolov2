@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
     
     file_to_open = args.iterations[0]
-    outpath = args.iterations[1]
+    outpath = args.outpath[0]
     b = pickle.load(open(file_to_open,'rb'))
 
     out = str(file_to_open)+'\titerations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
