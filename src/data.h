@@ -54,6 +54,7 @@ typedef struct load_args{
     int background;
     int scale;
 	int small_object;
+    int flip_vertical;
     float jitter;
     float angle;
     float aspect;
