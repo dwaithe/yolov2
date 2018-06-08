@@ -30,7 +30,6 @@ void train_yolo(char *cfgfile, char *weightfile)
         load_weights(&net, weightfile);
     }
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net.learning_rate, net.momentum, net.decay);
-    printf("that would explain things");
     int imgs = net.batch*net.subdivisions;
     int i = *net.seen/imgs;
     data train, buffer;
@@ -57,10 +56,6 @@ void train_yolo(char *cfgfile, char *weightfile)
     args.num_boxes = side;
     args.d = &buffer;
     args.type = REGION_DATA;
-    args.flip_vertical = net.flip_vertical;
-
-    printf("flip_verticalnt %d",net.flip_vertical);
-    printf("flip_verticalar %d",args.flip_vertical);
 
     args.angle = net.angle;
     args.exposure = net.exposure;
@@ -352,7 +347,6 @@ void run_yolo(int argc, char **argv)
     float thresh = find_float_arg(argc, argv, "-thresh", .2);
     int cam_index = find_int_arg(argc, argv, "-c", 0);
     int frame_skip = find_int_arg(argc, argv, "-s", 0);
-    
     if(argc < 4){
         fprintf(stderr, "usage: %s %s [train/test/valid] [cfg] [weights (optional)]\n", argv[0], argv[1]);
         return;

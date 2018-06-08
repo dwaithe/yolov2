@@ -94,6 +94,11 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
     args.type = DETECTION_DATA;
 	args.threads = 64;	// 8
 
+    args.flip_vertical = net.flip_vertical;
+
+    printf("flip_verticalnt %d",net.flip_vertical);
+    printf("flip_verticalar %d",args.flip_vertical);
+
     args.angle = net.angle;
     args.exposure = net.exposure;
     args.saturation = net.saturation;
