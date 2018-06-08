@@ -63,7 +63,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
 
     int imgs = net.batch * net.subdivisions * ngpus;
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net.learning_rate, net.momentum, net.decay);
-    printf("thisi is it");
+    
     data train, buffer;
 
     layer l = net.layers[net.n - 1];
@@ -96,8 +96,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
 
     args.flip_vertical = net.flip_vertical;
 
-    printf("flip_verticalnt %d",net.flip_vertical);
-    printf("flip_verticalar %d",args.flip_vertical);
+    
 
     args.angle = net.angle;
     args.exposure = net.exposure;
