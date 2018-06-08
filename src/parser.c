@@ -544,6 +544,7 @@ void parse_net_options(list *options, network *net)
 
     net->h = option_find_int_quiet(options, "height",0);
     net->w = option_find_int_quiet(options, "width",0);
+    net->flip_vertical = option_find_int_quiet(options, "flip_vertical",1);
     net->c = option_find_int_quiet(options, "channels",0);
     net->inputs = option_find_int_quiet(options, "inputs", net->h * net->w * net->c);
     net->max_crop = option_find_int_quiet(options, "max_crop",net->w*2);
