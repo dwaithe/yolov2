@@ -1,6 +1,7 @@
 import os, sys, argparse
 import numpy as np
 import _pickle as pickle
+import datetime
 
 def parse_args():
     """
@@ -27,9 +28,10 @@ if __name__ == '__main__':
     outpath = args.outpath[0]
     b = pickle.load(open(file_to_open,'rb'))
 
-    out = str(file_to_open)+'\titerations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
-    print(out)
+    out = str(datetime.datetime.now())+'\t'+str(file_to_open)+'\titerations\t'+str(file_to_open.split('_')[-2])+'\tmAP\t'+str(b['ap'])
+    
     file_name = 'my_file.txt'
+    print "Current date and time: " , 
     f = open(outpath+'log.txt', 'a+')  # open file in append mode
     f.write(out+'\n')
     f.close()
