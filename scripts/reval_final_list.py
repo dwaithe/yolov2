@@ -33,18 +33,3 @@ if __name__ == '__main__':
     f = open(outpath+'log.txt', 'a+')  # open file in append mode
     f.write(out+'\n')
     f.close()
-
-'''
-w  write mode
-r  read mode
-a  append mode
-
-w+  create file if it doesn't exist and open it in write mode
-r+  open an existing file in read+write mode
-a+  create file if it doesn't exist and open it in append mode
-'''''' w  wr
-example:
-
-
-
-    
