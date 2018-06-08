@@ -30,6 +30,7 @@ void train_yolo(char *cfgfile, char *weightfile)
         load_weights(&net, weightfile);
     }
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net.learning_rate, net.momentum, net.decay);
+    printf("that would explain things")
     int imgs = net.batch*net.subdivisions;
     int i = *net.seen/imgs;
     data train, buffer;
