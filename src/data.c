@@ -549,10 +549,10 @@ data load_data_region(int n, char **paths, int m, int w, int h, int size, int cl
 
         image sized = resize_image(cropped, w, h);
         if(flip_h) flip_image(sized);
-        printf("testing");
+        
         if(flip_v) {
             flipv_image(sized);
-            printf("flipping");
+            
         }
         random_distort_image(sized, hue, saturation, exposure);
         d.X.vals[i] = sized.data;
@@ -676,10 +676,10 @@ data load_data_swag(char **paths, int n, int classes, float jitter, int flip_ver
 
     image sized = resize_image(cropped, w, h);
     if(flip_h) flip_image(sized);
-    printf("testing");
+    
         if(flip_v) {
             flipv_image(sized);
-            printf("flipping");
+            
         }
     d.X.vals[0] = sized.data;
 
@@ -725,7 +725,7 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
 
         int flip_h = random_gen()%2;
         int flip_v = 0;
-        printf("fllip_vertical %d",flip_vertical);
+
         if(flip_vertical) flip_v = random_gen()%2;
         image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
 
@@ -734,10 +734,10 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
 
         image sized = resize_image(cropped, w, h);
         if(flip_h) flip_image(sized);
-        printf("testing");
+        
         if(flip_v) {
             flipv_image(sized);
-            printf("flipping");
+           
         }
         random_distort_image(sized, hue, saturation, exposure);
         d.X.vals[i] = sized.data;
