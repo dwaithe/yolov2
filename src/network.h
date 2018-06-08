@@ -31,6 +31,8 @@ typedef struct network{
     float *output;
     learning_rate_policy policy;
 
+    int flip_vertical;
+
     float learning_rate;
     float gamma;
     float scale;
