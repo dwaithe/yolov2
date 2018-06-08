@@ -630,7 +630,7 @@ data load_data_compare(int n, char **paths, int m, int classes, int w, int h)
     return d;
 }
 
-data load_data_swag(char **paths, int n, int classes, float jitter)
+data load_data_swag(char **paths, int n, int classes, float jitter, int flip_vertical)
 {
     int index = random_gen()%n;
     char *random_path = paths[index];
@@ -666,7 +666,9 @@ data load_data_swag(char **paths, int n, int classes, float jitter)
     float sy = (float)sheight / h;
 
     int flip_h = random_gen()%2;
-    int flip_v = random_gen()%2;
+    int flip_v = 0;
+
+    if(flip_vertical) flip_v = random_gen()%2;
     image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
 
     float dx = ((float)pleft/w)/sx;
@@ -685,7 +687,7 @@ data load_data_swag(char **paths, int n, int classes, float jitter)
     return d;
 }
 
-data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, int classes, float jitter, float hue, float saturation, float exposure, int small_object)
+data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, int classes, float jitter, float hue, float saturation, float exposure, int small_object, int flip_vertical)
 {
     char **random_paths = get_random_paths(paths, n, m);
     int i;
@@ -718,7 +720,8 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
         float sy = (float)sheight / oh;
 
         int flip_h = random_gen()%2;
-        int flip_v = random_gen()%2;
+        int flip_v = 0;
+        if(flip_vertical) flip_v = random_gen()%2;
         image cropped = crop_image(orig, pleft, ptop, swidth, sheight);
 
         float dx = ((float)pleft/ow)/sx;
@@ -760,9 +763,9 @@ void *load_thread(void *ptr)
     } else if (a.type == REGION_DATA){
         *a.d = load_data_region(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure, a.flip_vertical);
     } else if (a.type == DETECTION_DATA){
-        *a.d = load_data_detection(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure, a.small_object);
+        *a.d = load_data_detection(a.n, a.paths, a.m, a.w, a.h, a.num_boxes, a.classes, a.jitter, a.hue, a.saturation, a.exposure, a.small_object,a.flip_vertical);
     } else if (a.type == SWAG_DATA){
-        *a.d = load_data_swag(a.paths, a.n, a.classes, a.jitter);
+        *a.d = load_data_swag(a.paths, a.n, a.classes, a.jitter,a.flip_vertical);
     } else if (a.type == COMPARE_DATA){
         *a.d = load_data_compare(a.n, a.paths, a.m, a.classes, a.w, a.h);
     } else if (a.type == IMAGE_DATA){
