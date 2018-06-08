@@ -63,6 +63,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
 
     int imgs = net.batch * net.subdivisions * ngpus;
     printf("Learning Rate: %g, Momentum: %g, Decay: %g\n", net.learning_rate, net.momentum, net.decay);
+    printf("thisi is it");
     data train, buffer;
 
     layer l = net.layers[net.n - 1];
