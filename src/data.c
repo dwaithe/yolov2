@@ -676,7 +676,11 @@ data load_data_swag(char **paths, int n, int classes, float jitter, int flip_ver
 
     image sized = resize_image(cropped, w, h);
     if(flip_h) flip_image(sized);
-    if(flip_v) flipv_image(sized);
+    printf("testing");
+        if(flip_v) {
+            flipv_image(sized);
+            printf("flipping");
+        }
     d.X.vals[0] = sized.data;
 
     fill_truth_swag(random_path, d.y.vals[0], classes, flip_h,flip_v, dx, dy, 1./sx, 1./sy);
@@ -729,7 +733,11 @@ data load_data_detection(int n, char **paths, int m, int w, int h, int boxes, in
 
         image sized = resize_image(cropped, w, h);
         if(flip_h) flip_image(sized);
-        if(flip_v) flipv_image(sized);
+        printf("testing");
+        if(flip_v) {
+            flipv_image(sized);
+            printf("flipping");
+        }
         random_distort_image(sized, hue, saturation, exposure);
         d.X.vals[i] = sized.data;
 
