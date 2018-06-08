@@ -58,6 +58,9 @@ void train_yolo(char *cfgfile, char *weightfile)
     args.type = REGION_DATA;
     args.flip_vertical = net.flip_vertical;
 
+    printf("flip_verticalnt %d",net.flip_vertical);
+    printf("flip_verticalar %d",args.flip_vertical);
+
     args.angle = net.angle;
     args.exposure = net.exposure;
     args.saturation = net.saturation;
