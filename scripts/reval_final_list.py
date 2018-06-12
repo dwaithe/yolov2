@@ -32,5 +32,6 @@ if __name__ == '__main__':
     
     file_name = 'my_file.txt'
     f = open(outpath+'log.txt', 'a+')  # open file in append mode
+    print("saving file to:",outpath+'log.txt')
     f.write(out+'\n')
     f.close()
