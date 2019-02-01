@@ -1,9 +1,15 @@
-# Yolo-v2 modified for microscopy, Windows and Linux version
+# Yolo-v2 modified for microscopy (Windows and Linux version).
 
-This repository is forked from Linux-version: https://github.com/pjreddie/darknet
+This network is used in unison with the Automated Microscopy Control Algorithm (AMCA) located in the following repository: https://github.com/dwaithe/amca. This repository is forked from Linux-version: https://github.com/pjreddie/darknet
 
 Largely the code is as in the original by PJ Reddie. Here there are some specific modifications for using on microscopy data by Dominic Waithe.
+- I changed the data augmentation to flip image vertically as well as horizontally.
+- Rather than using and evaluating on ImageNet I do so on my own microscopy data. This data is available here https://zenodo.org/record/2548493. 
 
+
+
+
+## Below is the original README text from PJ Reddie.
 
 1. [How to use](#how-to-use)
 2. [How to compile on Linux](#how-to-compile-on-linux)
